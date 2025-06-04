@@ -1,0 +1,55 @@
+{% include 'layout/header_dashboard.html' %}
+
+<body class="bg-dark text-light">
+    {% include 'layout/nav.html' %}
+    
+    <div class="container-fluid p-4 bg-dark text-light">
+       
+        <div class="card border border-2 border-warning shadow-lg">
+            <div class="card-header bg-dark border-bottom border-warning">
+                <h4 class="mb-0 text-warning" style="font-family: 'Georgia', serif;">
+                    <i class="fas fa-database me-2"></i> Catálogo de Ventas Superstore
+                </h4>
+            </div>
+
+            <!-- Modales -->
+            {% include 'layout/modalAgregarVenta.html' %}
+            {% include 'layout/modalEditarVenta.html' %}
+
+            <!-- Detalles -->
+            <details class="mb-4 mt-3">
+                <summary class="h5 text-warning"><i class="fas fa-table me-2"></i>Mostrar tabla de ventas</summary>
+                <div class="mt-3 table-responsive">
+                    <table id="tablaVentas" class="table table-dark table-striped table-hover border border-warning" style="width:100%">
+                        <thead class="table-warning text-dark">
+                            <tr>
+                                <th>ID Venta</th>
+                                <th>Producto</th>
+                                <th>Categoría</th>
+                                <th>Año</th>
+                                <th>Vendedor</th>
+                                <th>Región</th>
+                                <th>Cantidad</th>
+                                <th>Precio Unitario</th>
+                                <th>Total Venta</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </details>
+        </div>
+
+        <!-- Scripts -->
+        {% include 'layout/scripts.html' %}
+        <script src="{{ url_for('static', filename='js/crudventas.js') }}?v=1.0.0"></script>
+
+    </div>
+
+    {% include 'layout/mensajes.html' %}
+
+</body>
+
+{% include 'layout/footer_dashboard.html' %}
+</html>

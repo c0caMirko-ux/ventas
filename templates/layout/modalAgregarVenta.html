@@ -1,0 +1,79 @@
+<!-- Botón Agregar -->
+<div class="mb-3">
+  <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAgregar">
+    <i class="fas fa-plus-circle me-1"></i> Agregar Venta
+  </button>
+</div>
+
+<!-- Modal Agregar Venta -->
+<div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="modalAgregarLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form id="formAgregarVenta">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title">Nueva Venta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body row g-3">
+          <div class="col-md-4">
+            <label class="form-label">ID Pedido</label>
+            <input type="text" name="order_id" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">ID Cliente</label>
+            <input type="text" name="customer_id" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Producto</label>
+            <input type="text" name="product_name" class="form-control" required>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Categoría</label>
+            <select name="category" id="addCategory" class="form-select"></select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Subcategoría</label>
+            <select name="subcategory" id="addSubcategory" class="form-select"></select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Cantidad</label>
+            <input type="number" name="quantity" class="form-control" required>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Precio Unitario</label>
+            <input type="number" step="0.01" name="unit_price" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Fecha</label>
+            <input type="date" name="order_date" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Método de Envío</label>
+            <select name="ship_mode" id="addShipMode" class="form-select"></select>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Segmento</label>
+            <select name="segment" id="addSegment" class="form-select"></select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Ciudad</label>
+            <input type="text" name="city" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Ventas Totales</label>
+            <input type="number" step="0.01" name="sales" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Guardar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

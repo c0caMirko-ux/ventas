@@ -1,0 +1,75 @@
+<!-- Modal Editar Venta -->
+<div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form id="formEditarVenta">
+        <div class="modal-header bg-warning text-dark">
+          <h5 class="modal-title" id="modalEditarLabel">Editar Venta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body row g-3">
+          <input type="hidden" name="id" id="editarId">
+
+          <div class="col-md-4">
+            <label class="form-label">ID Pedido</label>
+            <input type="text" name="order_id" id="editarOrderId" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">ID Cliente</label>
+            <input type="text" name="customer_id" id="editarCustomerId" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Producto</label>
+            <input type="text" name="product_name" id="editarProductName" class="form-control" required>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Categoría</label>
+            <select name="category" id="editarCategory" class="form-select"></select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Subcategoría</label>
+            <select name="subcategory" id="editarSubcategory" class="form-select"></select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Cantidad</label>
+            <input type="number" name="quantity" id="editarQuantity" class="form-control" required>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Precio Unitario</label>
+            <input type="number" step="0.01" name="unit_price" id="editarUnitPrice" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Fecha</label>
+            <input type="date" name="order_date" id="editarOrderDate" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Método de Envío</label>
+            <select name="ship_mode" id="editarShipMode" class="form-select"></select>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Segmento</label>
+            <select name="segment" id="editarSegment" class="form-select"></select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Ciudad</label>
+            <input type="text" name="city" id="editarCity" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Ventas Totales</label>
+            <input type="number" step="0.01" name="sales" id="editarSales" class="form-control" required>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-warning">Guardar Cambios</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
