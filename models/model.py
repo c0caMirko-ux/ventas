@@ -1,17 +1,14 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Date, Numeric, Text, Sequence, DateTime, SmallInteger,func, Float
-
-from sqlalchemy.orm import relationship, declarative_base
-from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy import Column, Integer, String, Date, Float
+from sqlalchemy.orm import declarative_base
 from flask_login import UserMixin
+from werkzeug.security import generate_password_hash, check_password_hash
 
-Base= declarative_base()
+Base = declarative_base()
 
 class SuperstoreOrder(Base):
     __tablename__ = 'superstore_orders'
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    no = Column(Integer, nullable=False)
-    row_id = Column(Integer, nullable=False)
+    row_id = Column(Integer, primary_key=True) 
     order_id = Column(String(20), nullable=False)
     order_date = Column(Date, nullable=False)
     ship_date = Column(Date, nullable=False)
@@ -34,9 +31,7 @@ class SuperstoreOrder(Base):
     profit = Column(Float, nullable=False)
 
     def __repr__(self):
-        return f"<superstore_orders(name='{self.name}', platform='{self.platform}')>"
-
-from flask_login import UserMixin
+        return f"<SuperstoreOrder(order_id='{self.order_id}', customer_name='{self.customer_name}')>"
 
 class Usuario(Base, UserMixin):
     __tablename__ = 'usuarios'
@@ -50,4 +45,3 @@ class Usuario(Base, UserMixin):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
-

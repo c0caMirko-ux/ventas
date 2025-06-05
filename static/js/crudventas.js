@@ -25,16 +25,16 @@ function cargarDatos() {
 
 function cargarTabla(data) {
     const cuerpo = data.map(d => [
-    d.id,  // <-- antes era d.RowID
-    d.OrderID,
-    d.OrderDate,
-    d.CustomerName,
-    d.City,
-    d.ProductName,
-    parseFloat(d.Sales).toFixed(2),
-    parseInt(d.Quantity),
-    parseFloat(d.Profit).toFixed(2)
-]);
+        d.RowID, 
+        d.OrderID,
+        d.OrderDate,
+        d.CustomerName,
+        d.City,
+        d.ProductName,
+        parseFloat(d.Sales).toFixed(2),
+        parseInt(d.Quantity),
+        parseFloat(d.Profit).toFixed(2)
+    ]);
 
 
     $('#tablaVentas').DataTable({

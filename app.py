@@ -137,7 +137,7 @@ def api_list_orders():
     orders = []
     for order in data:
         orders.append({
-            "id": order.id,
+            "RowID": order.row_id,
             "OrderID": order.order_id,
             "OrderDate": order.order_date.strftime('%Y-%m-%d'),
             "CustomerName": order.customer_name,
@@ -169,7 +169,6 @@ def obtener_opciones():
 def crear_order():
     data = request.json
     nueva = SuperstoreOrder(
-        no=int(data.get('no')),
         row_id=int(data.get('row_id')),
         order_id=data.get('order_id'),
         order_date=data.get('order_date'),
@@ -223,8 +222,8 @@ def actualizar_order(id):
     return jsonify({"mensaje": "Actualizado correctamente"})
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-##app.run(debug=True)
     port = int(os.environ.get("PORT", 5000))  # Render asigna el puerto dinámicamente
     app.run(host='0.0.0.0', port=port)
+
+
+

@@ -2,6 +2,7 @@
 
 <body class="bg-body-primary antique-body">
     {% include 'layout/nav.html' %}
+
     <div class="container-fluid bg-body-secondary py-4">
         <div class="card shadow antique-card">
 
@@ -16,6 +17,8 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
             <!-- Filtros -->
             <details class="mb-4 antique-details">
                 <summary class="h5 text-primary"><i class="fas fa-filter me-2"></i>Filtros de visualización</summary>
@@ -24,53 +27,38 @@
                         <label for="filterSegment" class="form-label">Segmento</label>
                         <select id="filterSegment" class="form-select">
                             <option value="">Todos</option>
-                            <!-- Segmentos dinámicos -->
-                        </select>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="filterCountry" class="form-label">País</label>
-                        <select id="filterCountry" class="form-select">
-                            <option value="">Todos</option>
-                            <!-- Países dinámicos -->
                         </select>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="filterCity" class="form-label">Ciudad</label>
                         <select id="filterCity" class="form-select">
                             <option value="">Todos</option>
-                            <!-- Ciudades dinámicos -->
                         </select>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="filterCategory" class="form-label">Categoría</label>
                         <select id="filterCategory" class="form-select">
                             <option value="">Todos</option>
-                            <!-- Categorías dinámicos -->
-                        </select>
-                        <label for="filterSubcategory" class="form-label">Subcategoría</label>
-                        <select id="filterSubcategory" class="form-select">
-                            <option value="">Todos</option>
-                            <!-- Subcategorías dinámicos -->
                         </select>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="filterProduct" class="form-label">Producto</label>
                         <select id="filterProduct" class="form-select">
                             <option value="">Todos</option>
-                            <!-- Productos dinámicos -->
                         </select>
+                    </div>
+                    <div class="col-md-3 mb-3">
                         <label for="filterCustomer" class="form-label">Cliente</label>
                         <select id="filterCustomer" class="form-select">
                             <option value="">Todos</option>
-                            <!-- Clientes dinámicos -->
-                                <option value="1">John Doe</option>
-                                <option value="2">Jane Doe</option>
-                                <option value="3">Bob Smith</option>
-                                <option value="4">Alice Johnson</option>
-                                <option value="5">John Smith</option>
-                                <option value="6">Jane Smith</option>
-                                <option value="7">Bob Johnson</option>
-                                <option value="8">Alice Smith</option>
+                            <option value="1">John Doe</option>
+                            <option value="2">Jane Doe</option>
+                            <option value="3">Bob Smith</option>
+                            <option value="4">Alice Johnson</option>
+                            <option value="5">John Smith</option>
+                            <option value="6">Jane Smith</option>
+                            <option value="7">Bob Johnson</option>
+                            <option value="8">Alice Smith</option>
                         </select>
                     </div>
                     <!-- Más filtros si quieres -->
@@ -105,79 +93,42 @@
             <!-- Tabs y Gráficos -->
             <div class="card antique-card">
                 <ul class="nav nav-tabs antique-tabs" id="chartTabs" role="tablist">
+                    <!-- Aquí van los botones de los tabs -->
+                    {% for tab in [
+                        'Ventas por Región', 'Ganancias por Categoría', 'Ganancias por Subcategoría',
+                        'Ganancias por Producto', 'Ganancias por Cliente', 'Ganancias por Orden',
+                        'Ganancias por Segmento', 'Ganancias por País', 'Ganancias por Ciudad',
+                        'Ganancias por Región'] %}
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="sales-tab" data-bs-toggle="tab" data-bs-target="#sales" type="button" role="tab">Ventas por Región</button>
+                        <button class="nav-link{% if loop.first %} active{% endif %}"
+                                id="tab{{ loop.index }}-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#tab{{ loop.index }}"
+                                type="button"
+                                role="tab">
+                            {{ tab }}
+                        </button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="profit-tab" data-bs-toggle="tab" data-bs-target="#profit" type="button" role="tab">Ganancias por Categoría</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="subcategoryProfit-tab" data-bs-toggle="tab" data-bs-target="#subcategoryProfit" type="button" role="tab">Ganancias por Subcategoría</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="productProfit-tab" data-bs-toggle="tab" data-bs-target="#productProfit" type="button" role="tab">Ganancias por Producto</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="customerProfit-tab" data-bs-toggle="tab" data-bs-target="#customerProfit" type="button" role="tab">Ganancias por Cliente</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="orderProfit-tab" data-bs-toggle="tab" data-bs-target="#orderProfit" type="button" role="tab">Ganancias por Orden</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="segmentProfit-tab" data-bs-toggle="tab" data-bs-target="#segmentProfit" type="button" role="tab">Ganancias por Segmento</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="countryProfit-tab" data-bs-toggle="tab" data-bs-target="#countryProfit" type="button" role="tab">Ganancias por País</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="cityProfit-tab" data-bs-toggle="tab" data-bs-target="#cityProfit" type="button" role="tab">Ganancias por Ciudad</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="regionProfit-tab" data-bs-toggle="tab" data-bs-target="#regionProfit" type="button" role="tab">Ganancias por Región</button>
-                    </li>
-                    <!-- Agrega más tabs si quieres -->
+                    {% endfor %}
                 </ul>
-                <div class="tab-content p-3" id="chartTabContent">
-                    <div class="tab-pane fade show active" id="sales" role="tabpanel">
-                        <canvas id="salesChart"></canvas>
-                    </div>
-                    <div class="tab-pane fade" id="profit" role="tabpanel">
-                        <canvas id="profitChart"></canvas>
-                    </div>
-                    <div class="tab-pane fade" id="subcategoryProfit" role="tabpanel">  
-                        <canvas id="subcategoryProfitChart"></canvas>
-                    </div>
-                    <div class="tab-pane fade" id="productProfit" role="tabpanel">
-                        <canvas id="productProfitChart"></canvas>
-                    </div>
-                    <div class="tab-pane fade" id="customerProfit" role="tabpanel">
-                        <canvas id="customerProfitChart"></canvas>
-                    </div>
-                    <div class="tab-pane fade" id="orderProfit" role="tabpanel">
-                        <canvas id="orderProfitChart"></canvas>
-                    </div>
-                    <div class="tab-pane fade" id="segmentProfit" role="tabpanel">
-                        <canvas id="segmentProfitChart"></canvas>
-                    </div>
-                    <div class="tab-pane fade" id="countryProfit" role="tabpanel">
-                        <canvas id="countryProfitChart"></canvas>
-                    </div>
-                    <div class="tab-pane fade" id="cityProfit" role="tabpanel">
-                        <canvas id="cityProfitChart"></canvas>
-                    </div>
-                    <div class="tab-pane fade" id="regionProfit" role="tabpanel">
 
-                        <canvas id="regionProfitChart"></canvas>
+                <div class="tab-content p-3" id="chartTabContent">
+                    {% for chart in range(1, 11) %}
+                    <div class="tab-pane fade{% if loop.first %} show active{% endif %}"
+                         id="tab{{ chart }}"
+                         role="tabpanel">
+                        <canvas id="chart{{ chart }}"></canvas>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
 
         </div>
-
-        {% include 'layout/scripts.html' %}
-        <script src="{{ url_for('static', filename='js/dashboard.js') }}?v=3.0.0"></script>
     </div>
+
+    {% include 'layout/scripts.html' %}
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}?v=3.0.0"></script>
+
 </body>
 
 {% include 'layout/footer_dashboard.html' %}
-</html>
